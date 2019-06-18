@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../img/snake-ico.png">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" type="text/css" href="../styles/style.css">
+    <title>Snake Multiplayer</title>
+    <iframe src="../music/zybex.mp3" allow="autoplay" style="display:none" id="iframeAudio">
+    </iframe> 
+    <audio autoplay loop id="playAudio">
+        <source src="../music/zybex.mp3">
+    </audio>
+    <script>
+        var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+        if(!isChrome){
+            $('#iframeAudio').remove()
+        }
+        else{
+            $('#playAudio').remove() //just to make sure that it will not have 2x audio in the background 
+        }
+    </script>
+</head>
+<body class="body-snake">
+    <div class="group group1">
+        <div class="container c1">
+            <h1>Player 1</h1>
+            <div class="content">
+                <div>
+                    <label for="nameP1">Name: </label>
+                    <input class="name" id="nameP1" autofocus>
+                </div>
+                <div>
+                    <label for="leftP1">Go Left Button: </label>
+                    <input class="btn btn2" id="leftP1" maxlength="1">
+                </div>
+                <div class="last-row">
+                    <label for="rightP1">Go Right Button: </label>
+                    <input class="btn" id="rightP1" maxlength="1">
+                </div>
+            </div>
+            <button class="createP1 create-btn" id="createP1">Create</button>
+        </div>
+        <div class="container c2">
+            <h1>Player 2</h1>
+            <div class="content">
+                <div>
+                    <label for="nameP2">Name: </label>
+                    <input class="name" id="nameP2" disabled>
+                </div>
+                <div>
+                    <label for="leftP2">Go Left Button: </label>
+                    <input class="btn btn2" id="leftP2" maxlength="1" disabled>
+                </div>
+                <div class="last-row">
+                    <label for="rightP2">Go Right Button: </label>
+                    <input class="btn" id="rightP2" maxlength="1" disabled>
+                </div>
+            </div>
+            <button class="createP2 create-btn" id="createP2" disabled> Create</button>
+        </div>
+    </div>
+    <div class="group">
+        <div class="container c3">
+            <h1>Player 3</h1>
+            <div class="content">
+                <div>
+                    <label for="nameP3">Name: </label>
+                    <input class="name" id="nameP3" disabled>
+                </div>
+                <div>
+                    <label for="leftP3">Go Left Button: </label>
+                    <input class="btn btn2" id="leftP3" maxlength="1" disabled>
+                </div>
+                <div class="last-row">
+                    <label for="rightP3">Go Right Button: </label>
+                    <input class="btn" id="rightP3" maxlength="1" disabled>
+                </div>
+            </div>
+            <button class="createP3 create-btn" id="createP3" disabled>Create</button>
+        </div>
+        <div class="container c4">
+            <h1>Player 4</h1>
+            <div class="content">
+                <div>
+                    <label for="nameP4">Name: </label>
+                    <input class="name" id="nameP4" disabled>
+                </div>
+                <div>
+                    <label for="leftP4">Go Left Button: </label>
+                    <input class="btn btn2" id="leftP4" maxlength="1" disabled>
+                </div>
+                <div class="last-row">
+                    <label for="rightP4">Go Right Button: </label>
+                    <input class="btn" id="rightP4" maxlength="1" disabled>
+                </div>
+            </div>
+            <button class="createP4 create-btn" id="createP4" disabled>Create</button>
+        </div>
+    </div>
+    <div class="btn-play-container">
+        <button class="btn-play" id="btn-play" disabled>Play</button>
+    </div>
+    <script type="text/javascript" src="./snake.js"></script>
+</body>
+</html>
