@@ -77,10 +77,13 @@ input{
 
 .name{
     margin-left:35px;
+    background-color: #C0C0C0;
 }
 
 .btn{
-    width: 20px;
+    width: 30px;
+    background-color: #C0C0C0;
+    border-color:blue;
 }
 
 .btn2{
@@ -89,10 +92,13 @@ input{
 
 .btn-play{
     text-align: center;
-    height: 40px;
+    height: 35px;
     width: 100px;
     border-radius: 10px;
     font-size: 30px;
+    color: #4A4A4A;
+    background-color: #C0C0C0;
+    padding-bottom: 40px;
 }
 
 .last-row{
@@ -147,20 +153,25 @@ input{
     font-size: 20px;
     height: 30px;
     border-radius: 10px;
+    background-color: #C0C0C0;
 }
 
-.c1{
+.c1, .name1, .createP1, .btn-1{
+    border-color: blue;
     color: blue;
 }
 
-.c2{
+.c2, .name2, .createP2, .btn-2{
+    border-color: green;
     color: green;
 }
 
-.c3{
+.c3, .name3, .createP3, .btn-3{
+    border-color: red;
     color: red;
 }
 
-.c4{
+.c4, .name4, .createP4, .btn-4{
+    border-color: yellow;
     color: yellow;
 }

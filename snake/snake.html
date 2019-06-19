@@ -24,45 +24,44 @@
         }
     </script>
         <script type="text/javascript" src="./players.js"></script>
-        <script type="text/javascript" src="./snake.js"></script>
-        <script type="text/javascript" src="./init.js"></script>
-
-</head>
-<body class="body-snake">
-    <div id="config">
-        <div class="group group1">
-            <div class="container c1">
-                <h1>Player 1</h1>
-                <div class="content">
-                    <div>
-                        <label for="nameP1">Name: </label>
-                        <input class="name" id="nameP1" autofocus>
+        <script type="text/javascript" src="./game.js"></script>
+        
+    </head>
+    <body class="body-snake">
+        <div id="config">
+            <div class="group group1">
+                <div class="container c1">
+                    <h1>Player 1</h1>
+                    <div class="content">
+                        <div>
+                            <label for="nameP1">Name: </label>
+                            <input class="name name1" id="nameP1" autofocus>
+                        </div>
+                        <div>
+                            <label for="leftP1">Go Left Button: </label>
+                            <input class="btn btn2 btn-1" id="leftP1" maxlength="1" style="text-transform:uppercase">
+                        </div>
+                        <div class="last-row">
+                            <label for="rightP1">Go Right Button: </label>
+                            <input class="btn btn-1" id="rightP1" maxlength="1" style="text-transform:uppercase">
+                        </div>
                     </div>
-                    <div>
-                        <label for="leftP1">Go Left Button: </label>
-                        <input class="btn btn2" id="leftP1" maxlength="1">
-                    </div>
-                    <div class="last-row">
-                        <label for="rightP1">Go Right Button: </label>
-                        <input class="btn" id="rightP1" maxlength="1">
-                    </div>
+                    <button class="createP1 create-btn" id="createP1">Create</button>
                 </div>
-                <button class="createP1 create-btn" id="createP1">Create</button>
-            </div>
-            <div class="container c2">
-                <h1>Player 2</h1>
+                <div class="container c2">
+                    <h1>Player 2</h1>
                 <div class="content">
                     <div>
                         <label for="nameP2">Name: </label>
-                        <input class="name" id="nameP2" disabled>
+                        <input class="name name2" id="nameP2" disabled>
                     </div>
                     <div>
                         <label for="leftP2">Go Left Button: </label>
-                        <input class="btn btn2" id="leftP2" maxlength="1" disabled>
+                        <input class="btn btn2 btn-2" id="leftP2" maxlength="1" disabled style="text-transform:uppercase">
                     </div>
                     <div class="last-row">
                         <label for="rightP2">Go Right Button: </label>
-                        <input class="btn" id="rightP2" maxlength="1" disabled>
+                        <input class="btn btn-2" id="rightP2" maxlength="1" disabled style="text-transform:uppercase">
                     </div>
                 </div>
                 <button class="createP2 create-btn" id="createP2" disabled> Create</button>
@@ -74,15 +73,15 @@
                 <div class="content">
                     <div>
                         <label for="nameP3">Name: </label>
-                        <input class="name" id="nameP3" disabled>
+                        <input class="name name3" id="nameP3" disabled>
                     </div>
                     <div>
                         <label for="leftP3">Go Left Button: </label>
-                        <input class="btn btn2" id="leftP3" maxlength="1" disabled>
+                        <input class="btn btn2 btn-3" id="leftP3" maxlength="1" disabled style="text-transform:uppercase">
                     </div>
                     <div class="last-row">
                         <label for="rightP3">Go Right Button: </label>
-                        <input class="btn" id="rightP3" maxlength="1" disabled>
+                        <input class="btn btn-3" id="rightP3" maxlength="1" disabled style="text-transform:uppercase">
                     </div>
                 </div>
                 <button class="createP3 create-btn" id="createP3" disabled>Create</button>
@@ -92,15 +91,15 @@
                 <div class="content">
                     <div>
                         <label for="nameP4">Name: </label>
-                        <input class="name" id="nameP4" disabled>
+                        <input class="name name4" id="nameP4" disabled>
                     </div>
                     <div>
                         <label for="leftP4">Go Left Button: </label>
-                        <input class="btn btn2" id="leftP4" maxlength="1" disabled>
+                        <input class="btn btn2 btn-4" id="leftP4" maxlength="1" disabled style="text-transform:uppercase">
                     </div>
                     <div class="last-row">
                         <label for="rightP4">Go Right Button: </label>
-                        <input class="btn" id="rightP4" maxlength="1" disabled>
+                        <input class="btn btn-4" id="rightP4" maxlength="1" disabled style="text-transform:uppercase">
                     </div>
                 </div>
                 <button class="createP4 create-btn" id="createP4" disabled>Create</button>
@@ -189,6 +188,7 @@
             </div>
         </div>
     </div>
-
+    
+    <script type="text/javascript" src="./snake.js"></script>
 </body>
 </html>
