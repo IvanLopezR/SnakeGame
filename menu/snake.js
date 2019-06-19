@@ -1,11 +1,11 @@
 class Snake{
-    constructor(ctx){
-        this.x = 10;
-        this.y = 410;
+    constructor(ctx,position,img){
+        this.x = position;
+        this.y = 405;
         this.width = 250;
         this.heigth = 150;
         this.img = new Image();
-        this.img.src = '../img/snake.png';
+        this.img.src = `../img/snake${img}.png`;        
         this.ctx = ctx;
     }
     

@@ -7,6 +7,7 @@
     <link rel="icon" href="../img/snake-ico.png">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" type="text/css" href="../styles/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <title>Snake Multiplayer</title>
     <iframe src="../music/zybex.mp3" allow="autoplay" style="display:none" id="iframeAudio">
     </iframe> 
@@ -22,87 +23,172 @@
             $('#playAudio').remove() //just to make sure that it will not have 2x audio in the background 
         }
     </script>
+        <script type="text/javascript" src="./players.js"></script>
+        <script type="text/javascript" src="./snake.js"></script>
+        <script type="text/javascript" src="./init.js"></script>
+
 </head>
 <body class="body-snake">
-    <div class="group group1">
-        <div class="container c1">
-            <h1>Player 1</h1>
-            <div class="content">
-                <div>
-                    <label for="nameP1">Name: </label>
-                    <input class="name" id="nameP1" autofocus>
+    <div id="config">
+        <div class="group group1">
+            <div class="container c1">
+                <h1>Player 1</h1>
+                <div class="content">
+                    <div>
+                        <label for="nameP1">Name: </label>
+                        <input class="name" id="nameP1" autofocus>
+                    </div>
+                    <div>
+                        <label for="leftP1">Go Left Button: </label>
+                        <input class="btn btn2" id="leftP1" maxlength="1">
+                    </div>
+                    <div class="last-row">
+                        <label for="rightP1">Go Right Button: </label>
+                        <input class="btn" id="rightP1" maxlength="1">
+                    </div>
                 </div>
-                <div>
-                    <label for="leftP1">Go Left Button: </label>
-                    <input class="btn btn2" id="leftP1" maxlength="1">
-                </div>
-                <div class="last-row">
-                    <label for="rightP1">Go Right Button: </label>
-                    <input class="btn" id="rightP1" maxlength="1">
-                </div>
+                <button class="createP1 create-btn" id="createP1">Create</button>
             </div>
-            <button class="createP1 create-btn" id="createP1">Create</button>
+            <div class="container c2">
+                <h1>Player 2</h1>
+                <div class="content">
+                    <div>
+                        <label for="nameP2">Name: </label>
+                        <input class="name" id="nameP2" disabled>
+                    </div>
+                    <div>
+                        <label for="leftP2">Go Left Button: </label>
+                        <input class="btn btn2" id="leftP2" maxlength="1" disabled>
+                    </div>
+                    <div class="last-row">
+                        <label for="rightP2">Go Right Button: </label>
+                        <input class="btn" id="rightP2" maxlength="1" disabled>
+                    </div>
+                </div>
+                <button class="createP2 create-btn" id="createP2" disabled> Create</button>
+            </div>
         </div>
-        <div class="container c2">
-            <h1>Player 2</h1>
-            <div class="content">
-                <div>
-                    <label for="nameP2">Name: </label>
-                    <input class="name" id="nameP2" disabled>
+        <div class="group">
+            <div class="container c3">
+                <h1>Player 3</h1>
+                <div class="content">
+                    <div>
+                        <label for="nameP3">Name: </label>
+                        <input class="name" id="nameP3" disabled>
+                    </div>
+                    <div>
+                        <label for="leftP3">Go Left Button: </label>
+                        <input class="btn btn2" id="leftP3" maxlength="1" disabled>
+                    </div>
+                    <div class="last-row">
+                        <label for="rightP3">Go Right Button: </label>
+                        <input class="btn" id="rightP3" maxlength="1" disabled>
+                    </div>
                 </div>
-                <div>
-                    <label for="leftP2">Go Left Button: </label>
-                    <input class="btn btn2" id="leftP2" maxlength="1" disabled>
-                </div>
-                <div class="last-row">
-                    <label for="rightP2">Go Right Button: </label>
-                    <input class="btn" id="rightP2" maxlength="1" disabled>
-                </div>
+                <button class="createP3 create-btn" id="createP3" disabled>Create</button>
             </div>
-            <button class="createP2 create-btn" id="createP2" disabled> Create</button>
+            <div class="container c4">
+                <h1>Player 4</h1>
+                <div class="content">
+                    <div>
+                        <label for="nameP4">Name: </label>
+                        <input class="name" id="nameP4" disabled>
+                    </div>
+                    <div>
+                        <label for="leftP4">Go Left Button: </label>
+                        <input class="btn btn2" id="leftP4" maxlength="1" disabled>
+                    </div>
+                    <div class="last-row">
+                        <label for="rightP4">Go Right Button: </label>
+                        <input class="btn" id="rightP4" maxlength="1" disabled>
+                    </div>
+                </div>
+                <button class="createP4 create-btn" id="createP4" disabled>Create</button>
+            </div>
+        </div>
+        <div class="btn-play-container">
+            <button class="btn-play" id="btn-play" disabled>Play</button>
         </div>
     </div>
-    <div class="group">
-        <div class="container c3">
-            <h1>Player 3</h1>
-            <div class="content">
-                <div>
-                    <label for="nameP3">Name: </label>
-                    <input class="name" id="nameP3" disabled>
-                </div>
-                <div>
-                    <label for="leftP3">Go Left Button: </label>
-                    <input class="btn btn2" id="leftP3" maxlength="1" disabled>
-                </div>
-                <div class="last-row">
-                    <label for="rightP3">Go Right Button: </label>
-                    <input class="btn" id="rightP3" maxlength="1" disabled>
+    <div id="game" class="not-visible">
+        <div>
+            <canvas id="canvas" class="canvas canvas-game"></canvas>
+        </div>
+        <div class="resume">
+            <div class="resume-content" id="p1-content" hidden>
+                <div class="c1">
+                    <div class="text">                    
+                        <h2>Player:</h2>
+                        <h2 id="p1"></h2>
+                    </div>
+                    <div class="text">
+                        <h2>Score:</h2>
+                        <h2 id="score-p1">0</h2>
+                    </div>
+                    <div class="text">
+                        <h2>Controls:</h2>
+                        <h2 id="left-p1"></h2>
+                        <h2> / </h2>
+                        <h2 id="right-p1"></h2>
+                    </div>
                 </div>
             </div>
-            <button class="createP3 create-btn" id="createP3" disabled>Create</button>
-        </div>
-        <div class="container c4">
-            <h1>Player 4</h1>
-            <div class="content">
-                <div>
-                    <label for="nameP4">Name: </label>
-                    <input class="name" id="nameP4" disabled>
-                </div>
-                <div>
-                    <label for="leftP4">Go Left Button: </label>
-                    <input class="btn btn2" id="leftP4" maxlength="1" disabled>
-                </div>
-                <div class="last-row">
-                    <label for="rightP4">Go Right Button: </label>
-                    <input class="btn" id="rightP4" maxlength="1" disabled>
+            <div class="resume-content" id="p2-content" hidden>
+                <div class="c2">
+                    <div class="text">                    
+                        <h2>Player:</h2>
+                        <h2 id="p2"></h2>
+                    </div>
+                    <div class="text">
+                        <h2>Score:</h2>
+                        <h2 id="score-p2">0</h2>
+                    </div>
+                    <div class="text">
+                        <h2>Controls:</h2>
+                        <h2 id="left-p2"></h2>
+                        <h2> / </h2>
+                        <h2 id="right-p2"></h2>
+                    </div>
                 </div>
             </div>
-            <button class="createP4 create-btn" id="createP4" disabled>Create</button>
+            <div class="resume-content" id="p3-content" hidden>
+                <div class="c3">
+                    <div class="text">                    
+                        <h2>Player:</h2>
+                        <h2 id="p3"></h2>
+                    </div>
+                    <div class="text">
+                        <h2>Score:</h2>
+                        <h2 id="score-p3">0</h2>
+                    </div>
+                    <div class="text">
+                        <h2>Controls:</h2>
+                        <h2 id="left-p3"></h2>
+                        <h2> / </h2>
+                        <h2 id="right-p3"></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="resume-content" id="p4-content" hidden>
+                <div class="c4">
+                    <div class="text">                    
+                        <h2>Player:</h2>
+                        <h2 id="p4"></h2>
+                    </div>
+                    <div class="text">
+                        <h2>Score:</h2>
+                        <h2 id="score-p4">0</h2>
+                    </div>
+                    <div class="text">
+                        <h2>Controls:</h2>
+                        <h2 id="left-p4"></h2>
+                        <h2>/</h2>
+                        <h2 id="right-p4"></h2>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="btn-play-container">
-        <button class="btn-play" id="btn-play" disabled>Play</button>
-    </div>
-    <script type="text/javascript" src="./snake.js"></script>
+
 </body>
 </html>

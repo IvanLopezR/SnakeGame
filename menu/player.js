@@ -1,7 +1,7 @@
 class Player {
     constructor(ctx) {
       this.x = 420;
-      this.y = 500;
+      this.y = 504;
       this.width = 245;
       this.height = 28;
       this.img = new Image();
@@ -49,7 +49,7 @@ class Player {
         this.right = true;
         this.img.frameIndex += 1;
         this.x +=6;
-        if(this.x > 680){
+        if(this.x > 720){
           window.open('../snake/snake.html');
         }
         if (this.img.frameIndex > 4){

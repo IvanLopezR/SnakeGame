@@ -1,0 +1,2 @@
+// window.onload = cargar("canvas");
+

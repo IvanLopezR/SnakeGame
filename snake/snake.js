@@ -17,6 +17,89 @@ let createP4 = document.getElementById("createP4");
 let play = document.getElementById("btn-play");
 let players = 0;
 let useKeys = [];
+let p1;
+let p2;
+let p3;
+let p4;
+
+var menu = {
+    w : 960,
+    h : 640,
+    canvas: undefined,
+    ctx: undefined
+}
+
+window.onload = cargar("canvas");
+
+function cargar(canvasId){
+    this.canvas = document.getElementById(canvasId);
+    this.ctx = this.canvas.getContext("2d");
+    this.canvas.setAttribute("width",menu.w);
+    this.canvas.setAttribute("height", menu.h);
+}
+
+function background(){
+    var background = new Image();
+    background.src = '../img/ground.jpg';
+    ctx.drawImage(background,0,0);   
+    ctx.drawImage(background, menu.w, menu.h, this.width, this.heigth);
+}
+
+// function loadPlayers(players){
+//     console.log(players);
+//     switch (players){
+//         case 1:
+//             p1 = new Players(ctx, "blue");
+//             p1.drawPlayer();
+//             break;
+//         case 2:
+//             p1 = new Players(ctx, "blue");
+//             p1.drawPlayer();
+//             p2 = new Players(ctx, "green");
+//             p2.drawPlayer();
+//             break;
+//         case 3:
+//             p1 = new Players(ctx, "blue");
+//             p1.drawPlayer();
+//             p2 = new Players(ctx, "green");
+//             p2.drawPlayer();
+//             p3 = new Players(ctx, "red");
+//             p3.drawPlayer();
+//             break;
+//         case 4:
+//             p1 = new Players(ctx, "blue");
+//             p1.drawPlayer();
+//             p2 = new Players(ctx, "green");
+//             p2.drawPlayer();
+//             p3 = new Players(ctx, "red");
+//             p3.drawPlayer();
+//             p4 = new Players(ctx, "ye");
+//             p4.drawPlayer();
+//             break;
+//     }
+// }
+
+p1 = new Players(ctx, "blue");
+p1.drawPlayer();
+p2 = new Players(ctx, "green");
+p2.drawPlayer();
+p3 = new Players(ctx, "red");
+p3.drawPlayer();
+p4 = new Players(ctx, "ye");
+p4.drawPlayer();
+
+setInterval(function(){
+    clear();
+    background();
+    p1.drawPlayer();
+    p2.drawPlayer();
+    p3.drawPlayer();
+    p4.drawPlayer();
+},60);
+
+function clear(){
+    this.ctx.clearRect(0, 0, this.menu.w, this.menu.h);
+}
 
 createP1.onclick = function(){
     if(nameP1.value!=="" && leftP1.value!=="" && rightP1.value!==""){
@@ -214,16 +297,58 @@ play.onclick = function(){
     nameP4 = nameP4.value;
     leftP4 = leftP4.value;
     rightP4 = rightP4.value;
-    if(players===1){
-        document.body.innerHTML = '';
+    document.querySelector("#config").setAttribute("class","not-visible");
+    document.getElementById("game").setAttribute("class","visible");
+    switch(players){
+        case 1:
+            document.getElementById("p1-content").hidden = false;
+            document.getElementById("p1").innerHTML = nameP1;
+            document.getElementById("left-p1").innerHTML = leftP1;
+            document.getElementById("right-p1").innerHTML = rightP1;
+            break;
+        case 2:
+            document.getElementById("p1-content").hidden = false;
+            document.getElementById("p1").innerHTML = nameP1;
+            document.getElementById("left-p1").innerHTML = leftP1;
+            document.getElementById("right-p1").innerHTML = rightP1;
+            document.getElementById("p2-content").hidden = false;
+            document.getElementById("p2").innerHTML = nameP2;
+            document.getElementById("left-p2").innerHTML = leftP2;
+            document.getElementById("right-p2").innerHTML = rightP2;
+            break;
+        case 3:
+            document.getElementById("p1-content").hidden = false;
+            document.getElementById("p1").innerHTML = nameP1;
+            document.getElementById("left-p1").innerHTML = leftP1;
+            document.getElementById("right-p1").innerHTML = rightP1;
+            document.getElementById("p2-content").hidden = false;
+            document.getElementById("p2").innerHTML = nameP2;
+            document.getElementById("left-p2").innerHTML = leftP2;
+            document.getElementById("right-p2").innerHTML = rightP2;
+            document.getElementById("p3-content").hidden = false;
+            document.getElementById("p3").innerHTML = nameP3;
+            document.getElementById("left-p3").innerHTML = leftP3;
+            document.getElementById("right-p3").innerHTML = rightP3;
+            break;
+        case 4:
+            document.getElementById("p1-content").hidden = false;
+            document.getElementById("p1").innerHTML = nameP1;
+            document.getElementById("left-p1").innerHTML = leftP1;
+            document.getElementById("right-p1").innerHTML = rightP1;
+            document.getElementById("p2-content").hidden = false;
+            document.getElementById("p2").innerHTML = nameP2;
+            document.getElementById("left-p2").innerHTML = leftP2;
+            document.getElementById("right-p2").innerHTML = rightP2;
+            document.getElementById("p3-content").hidden = false;
+            document.getElementById("p3").innerHTML = nameP3;
+            document.getElementById("left-p3").innerHTML = leftP3;
+            document.getElementById("right-p3").innerHTML = rightP3;
+            document.getElementById("p4-content").hidden = false;
+            document.getElementById("p4").innerHTML = nameP4;
+            document.getElementById("left-p4").innerHTML = leftP4;
+            document.getElementById("right-p4").innerHTML = rightP4;
+            break;
     }
-    else if(players===2){
-        document.body.innerHTML = '';
-    }
-    else if(players===3){
-        document.body.innerHTML = '';
-    }
-    else{
-        document.body.innerHTML = '';
-    }
+    // background();
+    // loadPlayers(players);
 }

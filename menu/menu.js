@@ -5,7 +5,6 @@ var menu = {
     canvas: undefined,
     ctx: undefined,
     keys:{
-        SPACE: 32,
         LEFT: 37,
         RIGHT: 39,
     },
@@ -24,8 +23,8 @@ function cargar(canvasId){
     this.canvas.setAttribute("height", menu.h);
 }
 
-var snake = new Snake(ctx);
-var air = new Air(ctx);
+var snakeLeft = new Snake(ctx,10,1);
+var snakeRight = new Snake(ctx,650,2);
 var player = new Player(ctx);
 
 function background(){
@@ -38,8 +37,8 @@ function background(){
 setInterval(function(){
     clear();
     background();
-    snake.drawSnake();
-    air.drawAir();
+    snakeLeft.drawSnake();
+    snakeRight.drawSnake();
     player.drawPlayer();
 },1);
 
@@ -57,9 +56,6 @@ document.onkeydown = function(event) {
         document.getElementById("arrowLeft").src = "../img/arrowLeft.png";
         document.getElementById("arrowRight").src = "../img/arrow-hover.png";
         player.animateImg("right");
-    }
-    else if (event.keyCode === menu.keys.SPACE){
-        console.log('espacio');
     }
 }.bind(this);
 
