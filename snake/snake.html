@@ -9,12 +9,12 @@
     <link rel="stylesheet" type="text/css" href="../styles/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <title>Snake Multiplayer</title>
-    <iframe src="../music/zybex.mp3" allow="autoplay" style="display:none" id="iframeAudio">
+    <iframe id="music" src="../music/zybex.mp3" allow="autoplay" style="display:none" id="iframeAudio">
     </iframe> 
-    <audio autoplay loop id="playAudio">
+    <audio id="music-2" autoplay loop id="playAudio">
         <source src="../music/zybex.mp3">
     </audio>
-    <script>
+    <script id="music-3">
         var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
         if(!isChrome){
             $('#iframeAudio').remove()
@@ -24,10 +24,12 @@
         }
     </script>
         <script type="text/javascript" src="./players.js"></script>
+        <script type="text/javascript" src="./objects.js"></script>
         <script type="text/javascript" src="./game.js"></script>
         
     </head>
     <body class="body-snake">
+        <button class="btn-sound" hidden><img src="../img/silence.png" width="25px"></button>
         <div id="config">
             <div class="group group1">
                 <div class="container c1">
@@ -106,7 +108,7 @@
             </div>
         </div>
         <div class="btn-play-container">
-            <button class="btn-play" id="btn-play" disabled>Play</button>
+            <button class="btn-play" id="btn-play">Play</button>
         </div>
     </div>
     <div id="game" class="not-visible">
