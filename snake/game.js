@@ -53,6 +53,7 @@ class Game {
                 }
                 this.cont++;
                 this.movePlayer()
+                this.finish();
             }, 15000 / this.fps);
         }, 2000)
     }
@@ -93,13 +94,6 @@ class Game {
         allVisitedPositions.axisY = allVisitedPositions.axisY.concat(this.framework.axisY);
 
         this.players.forEach((player) => {
-            if(!player.isLife()){
-                this.playersDead++;
-                if(this.playersDead===this.totalPlayers){
-                    clearInterval(this.intervalId);
-                    alert("Game Finished");
-                }
-            }
             allVisitedPositions.axisX = allVisitedPositions.axisX.concat(player.getArrayX());
             allVisitedPositions.axisY = allVisitedPositions.axisY.concat(player.getArrayY());
         })
@@ -118,7 +112,7 @@ class Game {
             player.movePlayer();
             for (let i = 0; i <= allVisitedPositions.axisX.length; i++) {
                 if (player.getX() === allVisitedPositions.axisX[i] && player.getY() === allVisitedPositions.axisY[i] && player.getVisibility()) {
-                    player.dead();                    
+                    player.dead();                  
                 }
             }
             for (let i = 0; i < this.objectsArr.length; i++) {
@@ -206,6 +200,19 @@ class Game {
                     }
                 }
             })
+        }
+    }
+
+    finish(){
+        let life=0;
+        this.players.forEach((player) => {
+            if(player.isLife()){
+                life++;
+            }
+        })
+        if(life===0){
+            clearInterval(this.intervalId);
+            alert("Game Finished!");
         }
     }
 
