@@ -122,7 +122,7 @@ class Game {
             for (let i = 0; i <= allVisitedPositions.axisX.length; i++) {
                 if (player.getX() === allVisitedPositions.axisX[i] && player.getY() === allVisitedPositions.axisY[i] && player.getVisibility()) {
                     player.dead();      
-                    this.crash.play();            
+                    // this.crash.play();            
                 }
             }
             for (let i = 0; i < this.objectsArr.length; i++) {
@@ -174,19 +174,19 @@ class Game {
         this.ctx.fillRect(945, 5, 10, 630);
         this.ctx.fillRect(5, 5, 950, 10);
         this.ctx.fillRect(5, 625, 950, 10);
-        for (let i = 10; i <= 630; i += 10) {
+        for (let i = 10; i <= 630; i += 5) {
             this.framework.axisX.push(10);
             this.framework.axisY.push(i);
         }
-        for (let i = 10; i <= 630; i += 10) {
+        for (let i = 10; i <= 630; i += 5) {
             this.framework.axisX.push(950);
             this.framework.axisY.push(i);
         }
-        for (let i = 10; i <= 950; i += 10) {
+        for (let i = 10; i <= 950; i += 5) {
             this.framework.axisX.push(i);
             this.framework.axisY.push(10);
         }
-        for (let i = 10; i <= 950; i += 10) {
+        for (let i = 10; i <= 950; i += 5) {
             this.framework.axisX.push(i);
             this.framework.axisY.push(630);
         }
