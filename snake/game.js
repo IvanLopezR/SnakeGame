@@ -21,6 +21,14 @@ class Game {
         this.objectsArr = [];
         this.frame = false;
         this.times = 0;
+        this.crash = new Audio(`../music/crash.mp3`);
+        this.door = new Audio(`../music/door.mp3`);
+        this.eat = new Audio(`../music/eat.mp3`);
+        this.ghost = new Audio(`../music/ghost.mp3`);
+        this.magic = new Audio(`../music/magic.mp3`);
+        this.sleep = new Audio(`../music/sleep.mp3`);
+        this.startGame = new Audio(`../music/start.mp3`);
+        this.endGame = new Audio(`../music/end.mp3`);
     }
 
     init = (players, controls) => {
@@ -38,6 +46,7 @@ class Game {
             this.players.push(new Players(this.ctx, this.colors[i]));
             this.players[i].addControls(this.controls[i * 2], this.controls[i * 2 + 1]);
         }
+        this.startGame.play();
         this.start()
     }
 
@@ -112,7 +121,8 @@ class Game {
             player.movePlayer();
             for (let i = 0; i <= allVisitedPositions.axisX.length; i++) {
                 if (player.getX() === allVisitedPositions.axisX[i] && player.getY() === allVisitedPositions.axisY[i] && player.getVisibility()) {
-                    player.dead();                  
+                    player.dead();      
+                    this.crash.play();            
                 }
             }
             for (let i = 0; i < this.objectsArr.length; i++) {
@@ -121,16 +131,20 @@ class Game {
                     player.setScore();
                     switch (this.objectsArr[i].getRandom()) {
                         case 0:
+                            this.ghost.play();
                             player.setVisibility();
                             break;
                         case 1:
+                            this.eat.play();
                             player.moreSpeed();
                             break;
                         case 2:
+                            this.door.play();
                             this.drawFramework();
                             this.frame = true;
                             break;
                         case 3:
+                            this.magic.play();
                             this.players.forEach((player) => {
                                 player.clearX();
                                 player.clearY();
@@ -140,6 +154,7 @@ class Game {
                             })
                             break;
                         case 4:
+                            this.sleep.play();
                             player.lessSpeed();
                             break;
                     }
@@ -213,6 +228,7 @@ class Game {
                 clearInterval(this.intervalId);
                 scoreOnePlayer = document.getElementById(`score-p1`).innerHTML;
                 winer = document.getElementById(`p1`).innerHTML.toUpperCase();
+                this.endGame.play();
                 alert(`Game Finished! Total score for ${winer}: ${scoreOnePlayer}`);
             }
         }
@@ -231,6 +247,7 @@ class Game {
                         winer = document.getElementById(`p${indexPlayer}`).innerHTML.toUpperCase();
                     }
                 })
+                this.endGame.play();
                 alert(`Game finished and ${winer} survived... Congratulations!!!`);
             }
         }

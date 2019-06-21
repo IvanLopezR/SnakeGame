@@ -1,6 +1,18 @@
-window.onload = function () {
+function LoadSounds(n, o, e) { !function (t) { var i, s = 0, d = 0, u = {}; for (i in n) d++; for (i in n) !function (i) { t = 0, t = new XMLHttpRequest, t.open("GET", n[i], !0), t.responseType = "blob", t.onload = function () { 200 == this.status && (s++ , u[i] = new Audio(URL.createObjectURL(this.response)), u[i].load(), o(n[i]), s == d && e(u), t = void 0) }, t.send() }(i); i = void 0 }(0) }
 
+var MyMusics = {
+    Music1: '../music/zybex.mp3'
+};
+LoadSounds(
+    MyMusics, // Musics object
+    function () { alert("+1 loaded"); }
+);
+
+
+
+window.onload = function () {
     let game = new Game();
+    putMusic();
     let nameP1 = document.getElementById("nameP1");
     let nameP2 = document.getElementById("nameP2");
     let nameP3 = document.getElementById("nameP3");
@@ -205,6 +217,7 @@ window.onload = function () {
     };
 
     play.onclick = function () {
+        zybex.pause();
         nameP1 = nameP1.value;
         leftP1 = leftP1.value;
         rightP1 = rightP1.value;
@@ -269,7 +282,11 @@ window.onload = function () {
                 document.getElementById("right-p4").innerHTML = rightP4.toUpperCase();
                 break;
         }
-        let controls = [leftP1,rightP1,leftP2,rightP2,leftP3,rightP3,leftP4,rightP4];
-        game.init(players,controls);
+        let controls = [leftP1, rightP1, leftP2, rightP2, leftP3, rightP3, leftP4, rightP4];
+        game.init(players, controls);
     }
+}
+
+function putMusic() {
+    zybex.play();
 }
