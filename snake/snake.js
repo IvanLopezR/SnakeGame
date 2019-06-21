@@ -219,7 +219,6 @@ window.onload = function () {
         rightP4 = rightP4.value;
         document.querySelector("#config").setAttribute("class", "not-visible");
         document.getElementById("game").setAttribute("class", "visible");
-        players = 2
         switch (players) {
             case 1:
                 document.getElementById("p1-content").hidden = false;
@@ -228,23 +227,14 @@ window.onload = function () {
                 document.getElementById("right-p1").innerHTML = rightP1.toUpperCase();
                 break;
             case 2:
-                // document.getElementById("p1-content").hidden = false;
-                // document.getElementById("p1").innerHTML = nameP1;
-                // document.getElementById("left-p1").innerHTML = leftP1.toUpperCase();
-                // document.getElementById("right-p1").innerHTML = rightP1.toUpperCase();
-                // document.getElementById("p2-content").hidden = false;
-                // document.getElementById("p2").innerHTML = nameP2;
-                // document.getElementById("left-p2").innerHTML = leftP2.toUpperCase();
-                // document.getElementById("right-p2").innerHTML = rightP2.toUpperCase();
-
                 document.getElementById("p1-content").hidden = false;
-                document.getElementById("p1").innerHTML = "dani";
-                document.getElementById("left-p1").innerHTML = "A";
-                document.getElementById("right-p1").innerHTML = "S";
+                document.getElementById("p1").innerHTML = nameP1;
+                document.getElementById("left-p1").innerHTML = leftP1.toUpperCase();
+                document.getElementById("right-p1").innerHTML = rightP1.toUpperCase();
                 document.getElementById("p2-content").hidden = false;
-                document.getElementById("p2").innerHTML = "ivan";
-                document.getElementById("left-p2").innerHTML = "K";
-                document.getElementById("right-p2").innerHTML = "L";
+                document.getElementById("p2").innerHTML = nameP2;
+                document.getElementById("left-p2").innerHTML = leftP2.toUpperCase();
+                document.getElementById("right-p2").innerHTML = rightP2.toUpperCase();
                 break;
             case 3:
                 document.getElementById("p1-content").hidden = false;
@@ -279,7 +269,7 @@ window.onload = function () {
                 document.getElementById("right-p4").innerHTML = rightP4.toUpperCase();
                 break;
         }
-        let controls = ["A","S","K","L",leftP3,rightP3,leftP4,rightP4];
+        let controls = [leftP1,rightP1,leftP2,rightP2,leftP3,rightP3,leftP4,rightP4];
         game.init(players,controls);
     }
 }
