@@ -11,10 +11,20 @@ class Objects{
     }
 
     drawObject(){
-        
         this.img.src = this.arrayObjects[this.rndm];
-        console.log(this.img.src)
         this.ctx.drawImage(this.img, this.x - this.width / 2, this.y - this.width / 2, this.width, this.height);
+    }
+
+    getX(){
+        return this.x;
+    }
+
+    getY(){
+        return this.y;
+    }
+
+    getRandom(){
+        return this.rndm;
     }
 
 }

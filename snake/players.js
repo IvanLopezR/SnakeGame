@@ -13,7 +13,6 @@ class Players {
         this.direction = Math.floor(Math.random() * (5 - 1) + 1);
         this.img.src = `../img/snake-${this.color}${this.direction}.png`;
         this.speed = 10;
-        this.widthBonus;
         this.score = 0;
         this.visibility = true;
         this.life = true;
@@ -133,21 +132,49 @@ class Players {
         return this.life;
     }
 
-    dead() {
+    dead(){
         this.life = false;
     }
 
-    visibility() {
+    setVisibility() {
+        this.visibility = false;
+        setTimeout(() => {
+            this.visibility = true;
+        }, 12000)
+    }
+
+    getVisibility(){
         return this.visibility;
     }
 
-    score(type) {
-        if (type === "normal") {
-            this.score += 100;
-        }
-        else {
-            this.score += 500;
-        }
+    moreSpeed(){
+        this.speed=20;
+        setTimeout(() => {
+            this.speed = 10;
+        }, 8000)
+    }
+
+    lessSpeed(){
+        this.speed = 5;
+        setTimeout(() => {
+            let auxX = this.x.toString();
+            let auxY = this.y.toString();
+            if(auxX[auxX.length-1]==="5"){
+                this.x+=5;
+            }
+            if(auxY[auxY.length-1]==="5"){
+                this.y+=5;
+            }
+            this.speed = 10;
+        }, 8000)
+    }
+
+    setScore(){
+        this.score += 500;
+    }
+
+    getScore(){
+        return this.score;
     }
 
     addControls(left, right) {
@@ -173,6 +200,14 @@ class Players {
 
     getY(){
         return this.y;
+    }
+
+    clearX(){
+        this.visitedPositions.axisX = [];
+    }
+
+    clearY(){
+        this.visitedPositions.axisY = [];
     }
 
     lengthArray(){
