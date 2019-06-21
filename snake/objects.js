@@ -1,7 +1,7 @@
 class Objects{
     constructor(ctx){
-        this.x = Math.floor(Math.random() * ((47 - 1) + 1)) * 10;
-        this.y = Math.floor(Math.random() * ((31 - 1) + 1)) * 10;
+        this.x = Math.floor(Math.random() * (94-10)+10) * 10;
+        this.y = Math.floor(Math.random() * (62-10)+10) * 10;
         this.width = 30;
         this.height = 30;
         this.ctx = ctx;

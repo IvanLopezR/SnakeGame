@@ -205,14 +205,34 @@ class Game {
 
     finish(){
         let life=0;
-        this.players.forEach((player) => {
-            if(player.isLife()){
-                life++;
+        let winer = "";
+        let scoreOnePlayer = 0;
+        let indexPlayer=0;
+        if(this.totalPlayers===1){
+            if(!this.players[0].isLife()){
+                clearInterval(this.intervalId);
+                scoreOnePlayer = document.getElementById(`score-p1`).innerHTML;
+                winer = document.getElementById(`p1`).innerHTML.toUpperCase();
+                alert(`Game Finished! Total score for ${winer}: ${scoreOnePlayer}`);
             }
-        })
-        if(life===0){
-            clearInterval(this.intervalId);
-            alert("Game Finished!");
+        }
+        else{
+            this.players.forEach((player) => {
+                if(player.isLife()){
+                    life++;
+                }
+            })
+            if(life===1){
+                clearInterval(this.intervalId);
+                this.players.forEach((player) => {
+                    indexPlayer++;
+                    if(player.isLife()){
+                        life++;
+                        winer = document.getElementById(`p${indexPlayer}`).innerHTML.toUpperCase();
+                    }
+                })
+                alert(`Game finished and ${winer} survived... Congratulations!!!`);
+            }
         }
     }
 

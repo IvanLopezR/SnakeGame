@@ -4,8 +4,8 @@ const PI_DOUBLE = 2 * Math.PI;
 class Players {
     constructor(ctx, color) {
         this.color = color;
-        this.x = Math.floor(Math.random() * ((47 - 1) + 1)) * 10;
-        this.y = Math.floor(Math.random() * ((31 - 1) + 1)) * 10;
+        this.x = Math.floor(Math.random() * (94-10)+10) * 10;
+        this.y = Math.floor(Math.random() * (62-10)+10) * 10;
         this.width = 20;
         this.height = 22;
         this.img = new Image();
