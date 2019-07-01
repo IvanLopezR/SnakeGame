@@ -1,6 +1,5 @@
 let zybex = new Audio(`../music/zybex.mp3`);
 
-
 window.onload = function () {
     let game = new Game();
     let nameP1 = document.getElementById("nameP1");
@@ -23,9 +22,21 @@ window.onload = function () {
     let sound = document.getElementById("btn-sound");
     let players = 0;
     let useKeys = [];
+    let soundBoolean = false;
 
     sound.onclick = function () {
+        if(!soundBoolean){
             zybex.play();
+            document.getElementById("btn-sound").classList.remove('btn-sound');
+            document.getElementById("btn-sound").classList.add('silence');
+            soundBoolean=true;
+        }
+        else{
+            zybex.pause();
+            document.getElementById("btn-sound").classList.remove('silence');
+            document.getElementById("btn-sound").classList.add('btn-sound');
+            soundBoolean=false;
+        }
     }
 
     createP1.onclick = function () {

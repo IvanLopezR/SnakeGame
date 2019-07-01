@@ -121,8 +121,10 @@ class Game {
             player.movePlayer();
             for (let i = 0; i <= allVisitedPositions.axisX.length; i++) {
                 if (player.getX() === allVisitedPositions.axisX[i] && player.getY() === allVisitedPositions.axisY[i] && player.getVisibility()) {
-                    player.dead();      
-                    // this.crash.play();            
+                    if(player.isLife()){
+                        player.dead();
+                        this.crash.play();            
+                    }
                 }
             }
             for (let i = 0; i < this.objectsArr.length; i++) {

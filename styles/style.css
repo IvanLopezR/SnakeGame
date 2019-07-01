@@ -29,11 +29,34 @@ h3{
     margin: -5px 0px 10px 0px;
 }
 
+button{
+    cursor: pointer;
+}
+
 .btn-sound{
     position: fixed;
     margin-left:20px;
     margin-top:-25px;
-    border-radius: 10;
+    border-radius: 10px;
+    width:35px;
+    height: 25px;
+    background-color: transparent;
+    border-color:transparent;
+    background-image: url('../img/sound.png');
+    background-repeat:no-repeat;
+}
+
+.silence{
+    position: fixed;
+    margin-left:20px;
+    margin-top:-25px;
+    border-radius: 10px;
+    width:35px;
+    height: 25px;
+    background-color: transparent;
+    border-color:transparent;
+    background-image: url('../img/silence.png');
+    background-repeat:no-repeat;
 }
 
 .resume{
